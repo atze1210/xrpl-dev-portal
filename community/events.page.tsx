@@ -14,7 +14,7 @@ const infoSession = require("../static/img/events/InfoSessions.png");
 const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.png");
 const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
-
+const decarb = require('../static/img/events/xrpl-decarb.png')
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -919,6 +919,28 @@ const events = [
     image: infoSession,
     end_date: "October 2, 2024",
   },
+  {
+    name: "XRPL Decarbonization Strategy",
+    description:
+      "Join us for the 3rd webinar in our Sustainability series. This time, Mélanie Damour and CCRI will dive into how Sustainability  Disclosure under MiCA for CASPs and Token Issuers.",
+    type: "info",
+    link: "https://decarb3.eventbrite.fr",
+    location: "Virtual",
+    date: "October 7, 2024",
+    image: decarb,
+    end_date: "October 7, 2024",
+  },
+  {
+    name: "The Future with Blockchain",
+    description:
+      "Join us for an exciting side event held by Axiology, SUPER HOW?,  XPMarket, and XRPL Commons during the biggest startup festival  in Lithuania, StartupFair.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/the-future-with-blockchain-tickets-1013765398597",
+    location: "Vilnius, Lithuania",
+    date: "October 3, 2024",
+    image: require('../static/img/events/xrpl-future.png'),
+    end_date: "October 3, 2024",
+  },
 ];
 
 
@@ -999,7 +1021,7 @@ export default function Events() {
           <div className="event-hero card-grid card-grid-2xN">
             <div className="pr-2 col">
               <img
-                alt="xrp ledger apex hero"
+                alt="xrp ledger events hero"
                 src={require("../static/img/events/event-hero3@2x.png")}
                 className="w-100"
               />
@@ -1007,26 +1029,26 @@ export default function Events() {
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRPL Zone Seoul")}
+                  {translate("XRPL Builder Office Hours")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!"
+                  "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
-                Location: Seongdong-su, Seoul
+                Location: Virtual - Zoom
               </div>
               <div className="py-2 my-3 event-small-gray">
-                September 4th, 2024
+                October 25th, 2024
               </div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://ripple.swoogo.com/xrpl-zone-seoul"
+                  href="https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA"
                 >
                   {translate("Register Now")}
                 </a>

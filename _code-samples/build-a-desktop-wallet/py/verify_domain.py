@@ -3,9 +3,9 @@
 #   https://xrpl.org/xrp-ledger-toml.html#account-verification
 # License: MIT. https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 
-import requests
 import toml
 import xrpl
+from security import safe_requests
 
 def verify_account_domain(account):
     """
@@ -21,7 +21,7 @@ def verify_account_domain(account):
     verified = False
     domain = xrpl.utils.hex_to_str(domain_hex)
     toml_url = f"https://{domain}/.well-known/xrp-ledger.toml"
-    toml_response = requests.get(toml_url)
+    toml_response = safe_requests.get(toml_url)
     if toml_response.ok:
         parsed_toml = toml.loads(toml_response.text)
         toml_accounts = parsed_toml.get("ACCOUNTS", [])

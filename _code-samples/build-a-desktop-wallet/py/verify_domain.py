@@ -21,7 +21,7 @@ def verify_account_domain(account):
     verified = False
     domain = xrpl.utils.hex_to_str(domain_hex)
     toml_url = f"https://{domain}/.well-known/xrp-ledger.toml"
-    toml_response = requests.get(toml_url)
+    toml_response = requests.get(toml_url, timeout=60)
     if toml_response.ok:
         parsed_toml = toml.loads(toml_response.text)
         toml_accounts = parsed_toml.get("ACCOUNTS", [])

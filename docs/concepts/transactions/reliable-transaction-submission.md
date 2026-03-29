@@ -162,7 +162,7 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
 - Failure case (3) represents an unexpected state. When a transaction is not processed, you should check the  `Sequence` number of the sending account in the most recent validated ledger. (You can use the [account_info method][] to do so.) If the account's `Sequence` value in the latest validated ledger is higher than the transaction's `Sequence` value, then a different transaction with the same `Sequence` value has been included in a validated ledger. If your system is not aware of the other transaction, you are in an unexpected state and should stop processing until you have determined why that has happened; otherwise, your system might send multiple transactions trying to do the same thing. The steps you should take depend on specifically what caused it. Some possibilities include:
 
-    - The previously-sent transaction was [malleable](finality-of-results/transaction-malleability.md) and it actually was included in a validated ledger, but with a different hash than you expected. This can happen if you specify a set of flags that do not include the `tfFullyCanonicalSig` flag or if the transaction is multi-signed by more signers than necessary. If this is the case, save the different hash and the final outcome of the transaction, then resume normal activities.
+    - The previously-sent transaction was [malleable](finality-of-results/transaction-malleability.md) and it actually was included in a validated ledger, but with a different hash than you expected. This can happen if the transaction is multi-signed by more signers than necessary. If this is the case, save the different hash and the final outcome of the transaction, then resume normal activities.
 
     - You [canceled](finality-of-results/canceling-a-transaction.md) and replaced the transaction, and the replacement transaction was processed instead. If you are recovering from an outage, it's possible you may have lost record of the replacement transaction. If this is the case, the transaction you were originally looking up has failed permanently, and the final outcome of the replacement transaction is recorded in a validated ledger version. Save both final outcomes, check for any other missing or replaced transactions, then resume normal activities.
 
@@ -188,7 +188,7 @@ To implement the transaction submission and verification best practices, applica
 
 1. Determine the signing account's next sequence number
     * Each transaction has an account-specific [sequence number](../../references/protocol/data-types/basic-data-types.md#account-sequence).  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
-3. Decide on a `LastLedgerSequence`
+2. Decide on a `LastLedgerSequence`
      * A transaction's `LastLedgerSequence` is calculated from the last validated ledger index.
 3. Construct and sign the transaction
     * Persist the details of a signed transaction before submission.
